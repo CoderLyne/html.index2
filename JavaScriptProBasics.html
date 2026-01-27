@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Loop and Array Assignment</title>
+</head>
+<body>
+
+<script>
+
+    for (let i = 0; i <= 10; i++) {
+        if (i % 2 === 0) {
+            document.write("Count " + i + " is even<br>");
+        } else {
+            document.write("Count " + i + " is odd<br>");
+        }
+    }
+
+    document.write("<br>");
+
+    let myNum = parseInt(prompt("Enter a number between 5 and 20:"));
+    let counter = 1;
+
+    do {
+        document.write("Counter: " + counter + "<br>");
+        counter++;
+    } while (counter <= myNum);
+
+    document.write("<br>");
+
+    let subjects = [
+        "Accounting",
+        "Algebra",
+        "Programming",
+        "Art",
+        "Data Analytics"
+    ];
+
+    subjects.forEach(function(subject) {
+        document.write(subject + "<br>");
+    });
+
+    document.write("<br>");
+
+    document.write(subjects.join(", "));
+</script>
+
+</body>
+</html>
