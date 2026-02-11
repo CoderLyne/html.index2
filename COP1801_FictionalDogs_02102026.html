@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fictional Dogs</title>
+</head>
+<body>
+
+<h2>Fictional Dogs in Animated Television</h2>
+
+<p id="dogList"></p>
+<p id="selectedDog"></p>
+<p id="greeting"></p>
+<p id="error" style="color:red;"></p>
+
+<script>
+
+function Dog(name, show, breed, color, canTalk) {
+    this.name = name;
+    this.show = show;
+    this.breed = breed;
+    this.color = color;
+    this.canTalk = canTalk;
+
+    this.myGreeting = function() {
+        if (this.canTalk) {
+            return "Hi, I'm " + this.name + " from " + this.show + ". I can talk!";
+        } else {
+            return "Hi, I'm " + this.name + " from " + this.show + ". I cannot talk.";
+        }
+    };
+}
+
+let clifford = new Dog(
+    "Clifford the Big Red Dog",
+    "Clifford the Big Red Dog",
+    "Giant Red Dog",
+    "Red",
+    false
+);
+
+let bluey = new Dog(
+    "Bluey",
+    "Bluey",
+    "Blue Heeler",
+    "Blue",
+    true
+);
+
+let dogInfo = "";
+
+for (let property in clifford) {
+    if (typeof clifford[property] !== "function") {
+        dogInfo += "<strong>Clifford " + property + ":</strong> " + clifford[property] + "<br>";
+    }
+}
+
+dogInfo += "<br>";
+
+for (let property in bluey) {
+    if (typeof bluey[property] !== "function") {
+        dogInfo += "<strong>Bluey " + property + ":</strong> " + bluey[property] + "<br>";
+    }
+}
+
+document.getElementById("dogList").innerHTML = dogInfo;
+
+
+let userChoice = prompt("Type either 'Clifford the Big Red Dog' or 'Bluey' to learn more:");
+
+let selectedDog;
+
+if (userChoice === "Clifford the Big Red Dog") {
+    selectedDog = clifford;
+} 
+else if (userChoice === "Bluey") {
+    selectedDog = bluey;
+} 
+else {
+    document.getElementById("error").innerHTML = "Error: The dog you selected does not exist.";
+}
+
+
+if (selectedDog) {
+    let details = "";
+
+    for (let property in selectedDog) {
+        if (typeof selectedDog[property] !== "function") {
+            details += "<strong>" + property + ":</strong> " + selectedDog[property] + "<br>";
+        }
+    }
+
+    document.getElementById("selectedDog").innerHTML = details;
+
+ 
+    document.getElementById("greeting").innerHTML = selectedDog.myGreeting();
+}
+
+</script>
+
+</body>
+</html>
